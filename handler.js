@@ -1,30 +1,29 @@
 'use strict';
 
-const Humanoid = require("humanoid-js");
-const humanoid = new Humanoid();
-
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
-var url = 'https://nwdb.info/server-status/servers.json';
-var worldName = 'Murias';
-var fullFlag = false;
-var maintenanceFlag = false;
-var downFlag = false;
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.login('ODEyMjI0MjU0OTIxNDA4NTI1.YC9oyA.o5TMzTeEoNTMDt7oLn5LlRR3gFI');
-
-// client.on('message', msg => {
-//   if (msg.content === 'ping') {
-//     msg.reply('pong');
-//   }
-// });
-
 module.exports.run = async (event, context) => {
+  const Humanoid = require("humanoid-js");
+  const humanoid = new Humanoid();
+
+  const Discord = require('discord.js');
+  const client = new Discord.Client();
+
+  var url = 'https://nwdb.info/server-status/servers.json';
+  var worldName = 'Murias';
+  var fullFlag = false;
+  var maintenanceFlag = false;
+  var downFlag = false;
+
+  client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+  });
+
+  client.login('ODEyMjI0MjU0OTIxNDA4NTI1.YC9oyA.o5TMzTeEoNTMDt7oLn5LlRR3gFI');
+
+  // client.on('message', msg => {
+  //   if (msg.content === 'ping') {
+  //     msg.reply('pong');
+  //   }
+  // });
   const time = new Date();
   console.log(`Your cron function "${context.functionName}" ran at ${time}`);
   humanoid.get(url)
