@@ -1,0 +1,22 @@
+org: saindxd
+app: new-world-discord-alerts
+service: new-world-discord-alerts
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  rateHandler:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every 5 minutes
+      - schedule: rate(5 minutes)
+  # cronHandler:
+  #   handler: handler.run
+  #   events:
+  #     # Invoke Lambda function every 2nd minute from Mon-Fri
+  #     - schedule: cron(0/2 * ? * MON-FRI *)
